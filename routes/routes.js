@@ -47,5 +47,8 @@ router.post('/post', async (req, res) => {
     res.status(400).json({ message: error.message })
     }
    })
+   app.get('/', (req, res) => {
+    res.send('API está funcionando!');
+  });
    
    
