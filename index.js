@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 
 const app = express();
 const PORT = process.env.PORT || 10000;
-const mongoURL = process.env.DATABASE_URL; // Agora usando variável de ambiente
+const mongoURL = process.env.DATABASE_URL;
 
 // Middleware CORS
 app.use((req, res, next) => {
@@ -18,7 +19,7 @@ app.use(express.json());
 app.use('/api', routes);
 
 // Conexão com MongoDB
-mongoose.connect(mongoURL);  // Removido useNewUrlParser e useUnifiedTopology
+mongoose.connect(mongoURL);
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
@@ -28,9 +29,4 @@ db.once('connected', () => console.log('✅ Database Connected'));
 // Iniciando servidor
 app.listen(PORT, () => {
   console.log(`🚀 Server Started at port ${PORT}`);
-});
-routes(app); // Passa o app como parâmetro
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
 });
