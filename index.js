@@ -18,7 +18,7 @@ app.use(express.json());
 app.use('/api', routes);
 
 // Conexão com MongoDB
-mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoURL);  // Removido useNewUrlParser e useUnifiedTopology
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
@@ -29,5 +29,3 @@ db.once('connected', () => console.log('✅ Database Connected'));
 app.listen(PORT, () => {
   console.log(`🚀 Server Started at port ${PORT}`);
 });
-
-
