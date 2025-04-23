@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 const mongoURL = process.env.DATABASE_URL; // Agora usando variável de ambiente
 
 // Middleware CORS
