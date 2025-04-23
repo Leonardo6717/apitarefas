@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const routes = require('./routes/routes');
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3000;
 const mongoURL = process.env.DATABASE_URL; // Agora usando variável de ambiente
 
 // Middleware CORS
@@ -28,4 +28,9 @@ db.once('connected', () => console.log('✅ Database Connected'));
 // Iniciando servidor
 app.listen(PORT, () => {
   console.log(`🚀 Server Started at port ${PORT}`);
+});
+routes(app); // Passa o app como parâmetro
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
